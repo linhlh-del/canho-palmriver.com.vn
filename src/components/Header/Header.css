@@ -1,0 +1,369 @@
+/* Header.css */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap");
+/* ════════════════════════════════════════
+   HEADER BAR
+════════════════════════════════════════ */
+.hd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  width: 100%;
+  height: 80px;
+  padding: 0 80px;
+  background-image: url("../../assets/images/bg-web.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: box-shadow 0.3s ease;
+}
+
+.hd--scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Logo ── */
+.hd__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  height: 64%;
+  gap: 2rem;
+}
+
+.hd__logo img {
+  width: 6rem;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Desktop nav ── */
+.hd__nav {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.hd__nav-link {
+  color: #d2b57c;
+  font-family: "DVNBeaufort-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+
+.hd__nav-link:hover {
+  color: #ccc;
+}
+
+.hd__nav-link:hover::after,
+.hd__nav-link--active::after {
+  width: 100%;
+}
+
+.hd__nav-link--active {
+  color: #ccc;
+}
+
+/* ── Desktop CTA ── */
+.hd__cta {
+  /* background: #ff6700; */
+  background: #d2b57c;
+  font-family: "DVNBeaufort-Regular", sans-serif;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  animation: buttonJump 1.5s ease-in-out infinite;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hd__cta:hover {
+  background: #07443b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(211, 167, 105, 0.4);
+  color: #d2b57c;
+}
+
+/* ── Hamburger (ẩn trên desktop) ── */
+.hd__burger {
+  all: unset;
+  cursor: pointer;
+  display: none; /* chỉ hiện ở mobile */
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.hd__burger img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* trắng hóa icon */
+}
+
+/* ════════════════════════════════════════
+   MOBILE DROPDOWN MENU
+════════════════════════════════════════ */
+.hd__mobile-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 199;
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  background-image: url("../../assets/images/bg-web.jpg");
+
+  display: flex;
+  flex-direction: column;
+
+  transform: translateX(100%);
+  transition:
+    transform 0.35s ease,
+    opacity 0.3s ease;
+  opacity: 0;
+}
+
+.hd__mobile-menu--open {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ── Mobile navigation menu ── */
+.hd__mobile-nav {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.hd__mobile-link {
+  color: #d2b57c;
+  font-family: "DVNBeaufort-Regular", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  padding: 20px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.hd__mobile-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #d3a769;
+}
+
+.hd__mobile-link--active {
+  color: #d3a769;
+  background: rgba(211, 167, 105, 0.08);
+}
+
+.hd__mobile-cta {
+  all: unset;
+  cursor: pointer;
+  margin: 1.5rem 2rem;
+  margin-bottom: 4rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 14px 24px;
+  color: #c58911;
+  font-family: "DVNBeaufort-Regular", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+
+.hd__mobile-cta:hover {
+  background: #c8954a;
+}
+
+/* Footer info trong menu mobile */
+.hd__mobile-footer {
+  margin-top: auto;
+  padding: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hd__mobile-footer img {
+  width: 120px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.hd__mobile-hotline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.hd__mobile-hotline span {
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hd__mobile-hotline a {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #d2b57c;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.hd__mobile-hotline a:hover {
+  color: #d3a769;
+}
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+
+/* Desktop lớn > 1400px: giữ nguyên */
+@media (max-width: 1600px) {
+  .hd__nav {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+/* Large Desktop: 1200px - 1400px */
+@media (max-width: 1400px) {
+  .hd {
+    padding: 0 60px;
+  }
+  .hd__nav {
+    gap: 2.5rem;
+  }
+  .hd__nav-link {
+    font-size: 0.8rem;
+  }
+  .hd__cta {
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Medium Desktop: 1024px - 1200px */
+@media (max-width: 1200px) {
+  .hd {
+    padding: 0 40px;
+  }
+  .hd__cta {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+  }
+  .hd__nav {
+    gap: 1.5rem;
+  }
+}
+
+/* Small Desktop: 900px - 1024px */
+@media (max-width: 1024px) {
+  .hd {
+    padding: 0 1.85rem;
+  }
+  .hd__nav {
+    display: none;
+  }
+  .hd__cta {
+    display: none;
+  }
+  .hd__burger {
+    display: flex;
+  }
+}
+
+/* Mobile < 768px: ẩn nav + CTA desktop, hiện hamburger */
+@media (max-width: 768px) {
+  .hd {
+    padding: 0 20px;
+  }
+
+  .hd__nav {
+    display: none;
+  }
+
+  .hd__cta {
+    display: none;
+  }
+
+  .hd__burger {
+    display: flex; /* hiện hamburger */
+  }
+  .hd__logo {
+    gap: 0;
+  }
+  .hd__logo img {
+    width: 80px;
+  }
+}
+
+/* ════════════════════════════════════════
+   MINIMAL HEADER (dùng cho NewsDetailPage)
+════════════════════════════════════════ */
+.hd--minimal {
+  justify-content: space-between;
+}
+
+.hd--minimal .hd__logo {
+  cursor: pointer;
+}
+
+/* CTA trong header minimal luôn hiển thị, kể cả ở mobile/tablet,
+   vì không có mobile menu để chứa nút thay thế */
+.hd__cta--minimal {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .hd__cta--minimal {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hd__cta--minimal {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+}

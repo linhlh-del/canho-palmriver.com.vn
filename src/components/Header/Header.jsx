@@ -1,0 +1,204 @@
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
+import menuIcon from "../../assets/images/logo-menu.png";
+import logoRever from "../../assets/images/logo-rever.png";
+import "./Header.css";
+
+const NAV_ITEMS = [
+  { label: "TỔNG QUAN", href: "#tong-quan" },
+  { label: "VỊ TRÍ", href: "#map" },
+  { label: "MẶT BẰNG", href: "#mat-bang-tong-the" },
+  { label: "TIỆN ÍCH", href: "#tien-ich" },
+  { label: "TIN TỨC", href: "#tin-tuc" },
+  { label: "LIÊN HỆ", href: "#lien-he" },
+];
+
+export default function Header({ onOpenModal, variant = "full" }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState("");
+
+  const isMinimal = variant === "minimal";
+
+  // Shadow khi scroll
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Đóng menu khi resize lên desktop
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setMenuOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // Lock scroll khi menu mobile mở
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Đóng menu khi click outside
+  useEffect(() => {
+    if (!menuOpen) return;
+    const close = (e) => {
+      if (
+        !e.target.closest(".hd__mobile-menu") &&
+        !e.target.closest(".hd__burger")
+      ) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, [menuOpen]);
+
+  // Điều hướng nav: nếu đang ở trang chủ -> scroll trực tiếp tới section.
+  // Nếu đang ở trang khác (vd: /tin-tuc/:id) -> navigate về "/" và gửi
+  // section cần cuộn tới qua location.state (KHÔNG dùng query string),
+  // nên URL không bao giờ hiện ra dạng /?section=... trên thanh địa chỉ.
+  const handleNav = (e, href) => {
+    e.preventDefault();
+    setActiveHref(href);
+    setMenuOpen(false);
+
+    const isSectionLink = href.startsWith("#");
+    const sectionId = href.replace("#", "");
+
+    if (isSectionLink && location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+      return;
+    }
+
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const handleCTA = () => {
+    setMenuOpen(false);
+    if (onOpenModal) onOpenModal();
+  };
+
+  const handleLogoClick = (event) => {
+    event.preventDefault();
+    setMenuOpen(false);
+
+    if (isMinimal) {
+      // Từ trang tin tức: về trang chủ và tự cuộn xuống mục Tin tức
+      navigate("/", { state: { scrollTo: "tin-tuc" } });
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate("/", { replace: false });
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <header
+        className={`hd${scrolled ? " hd--scrolled" : ""}${isMinimal ? " hd--minimal" : ""}`}
+      >
+        {/* Logo */}
+        <div className="hd__logo">
+          <a href="#top" onClick={handleLogoClick}>
+            <img src={logo} alt="Palm City" />
+          </a>
+        </div>
+
+        {!isMinimal && (
+          <>
+            {/* Desktop nav */}
+            <nav className="hd__nav" aria-label="Main navigation">
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`hd__nav-link${activeHref === item.href ? " hd__nav-link--active" : ""}`}
+                  onClick={(e) => handleNav(e, item.href)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Desktop CTA */}
+            <button className="hd__cta" onClick={handleCTA}>
+              NHẬN BÁO GIÁ
+            </button>
+
+            {/* Hamburger */}
+            <button
+              className="hd__burger"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label="Mở menu"
+              aria-expanded={menuOpen}
+            >
+              <img src={menuIcon} alt="Menu" />
+            </button>
+          </>
+        )}
+
+        {isMinimal && (
+          <button className="hd__cta hd__cta--minimal" onClick={handleCTA}>
+            NHẬN BÁO GIÁ
+          </button>
+        )}
+      </header>
+
+      {/* Overlay */}
+      {!isMinimal && menuOpen && (
+        <div className="hd__overlay" onClick={() => setMenuOpen(false)} />
+      )}
+
+      {/* Mobile menu */}
+      {!isMinimal && (
+        <div
+          className={`hd__mobile-menu${menuOpen ? " hd__mobile-menu--open" : ""}`}
+        >
+          {/* Nav links */}
+          <nav className="hd__mobile-nav">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`hd__mobile-link${activeHref === item.href ? " hd__mobile-link--active" : ""}`}
+                onClick={(e) => handleNav(e, item.href)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* CTA */}
+          <button className="hd__mobile-cta" onClick={handleCTA}>
+            NHẬN BÁO GIÁ
+          </button>
+
+          {/* Footer: logo + hotline */}
+          <div className="hd__mobile-footer">
+            {/* <img src={logoRever} alt="Rever" /> */}
+            {/* <div className="hd__mobile-hotline">
+              <span>Hotline</span>
+              <a href="tel:0939535111">0939 535 111</a>
+            </div> */}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}ád

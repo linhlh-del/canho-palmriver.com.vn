@@ -1,0 +1,840 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@1,600&family=Montserrat:wght@500;700&display=swap");
+
+.section {
+  background-color: #daeeff;
+  padding: 5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 75rem;
+  max-width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* ── HEADER ── */
+.header {
+  text-align: center;
+}
+
+.header h2 {
+  font-family: "SVN-Mightiest";
+  font-size: 3.75rem;
+  color: #004380;
+  font-weight: 400 !important;
+}
+
+/* ── TABS ── */
+.tabs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab {
+  text-transform: uppercase;
+  padding: 1.5rem;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+  color: #004380;
+  font-weight: 700;
+  font-family: "Reddit Sans", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+  flex: 1;
+  text-align: center;
+  min-width: 6rem;
+}
+
+.active {
+  background: #004380;
+  color: #fff;
+}
+
+/* ── CAROUSEL WRAPPER ── */
+.carouselWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* ── LEFT PANEL ── */
+.aptInfo {
+  width: 38%;
+  flex-shrink: 0;
+  background: #004380;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.layoutBtns {
+  display: flex;
+  width: 100%;
+  gap: 0;
+}
+
+.layoutBtn {
+  flex: 1;
+  font-family: "Reddit Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #004380;
+  background: #fff;
+  border: 1px solid #004380;
+  padding: 1rem 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.layoutBtn:first-child {
+  border-right: 1px solid #b5d4f4;
+}
+
+.layoutBtnActive {
+  background: #ff6700;
+  border: none;
+  color: #fff;
+  border-bottom-color: #004380;
+}
+
+.aptTitle {
+  font-family: "Noto Serif Display", serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  padding: 1rem 1.75rem 0;
+}
+
+.aptDivider {
+  width: 90px;
+  height: 1px;
+  background: #fff;
+  margin: 0 1.75rem;
+}
+
+/* ── GIÁ ── */
+.priceBox {
+  border: none;
+  margin: 0 1.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.priceLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.priceLabel {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+
+.priceValue {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════
+   PRICE TABLE BUTTON
+════════════════════════════════════════ */
+.priceTableBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 0.6rem 0.875rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  width: auto;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.priceTableBtn:hover {
+  opacity: 0.75;
+}
+
+.priceTableText {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.priceTableBtn img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+@keyframes nudgeLeft {
+  0%,
+  100% {
+    transform: rotate(-90deg) translateX(0);
+    opacity: 1;
+  }
+  40% {
+    transform: rotate(-90deg) translateX(-5px);
+    opacity: 0.4;
+  }
+  60% {
+    transform: rotate(-90deg) translateX(-5px);
+    opacity: 0.4;
+  }
+  80% {
+    transform: rotate(-90deg) translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes nudgeRight {
+  0%,
+  100% {
+    transform: rotate(90deg) translateX(0);
+    opacity: 1;
+  }
+  40% {
+    transform: rotate(90deg) translateX(5px);
+    opacity: 0.4;
+  }
+  60% {
+    transform: rotate(90deg) translateX(5px);
+    opacity: 0.4;
+  }
+  80% {
+    transform: rotate(90deg) translateX(0);
+    opacity: 1;
+  }
+}
+
+.arrowAnimLeft {
+  animation: nudgeLeft 1.6s ease-in-out infinite;
+}
+.arrowAnimLeft2 {
+  animation: nudgeLeft 1.6s ease-in-out infinite 0.18s;
+  opacity: 0.55;
+}
+.arrowAnimRight {
+  animation: nudgeRight 1.6s ease-in-out infinite;
+}
+.arrowAnimRight2 {
+  animation: nudgeRight 1.6s ease-in-out infinite 0.18s;
+  opacity: 0.55;
+}
+
+/* ── THÔNG SỐ ── */
+.specTitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.1em;
+  margin: 0 1.75rem;
+}
+
+.specGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  flex: 1;
+  align-content: start;
+  padding: 0 1.75rem 1.75rem;
+}
+
+.specCard {
+  border: 0.5px solid #fff;
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 72px;
+  justify-content: center;
+}
+
+.specCardLabel {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.specCardValue {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+/* ── RIGHT PANEL ── */
+.carouselRight {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrapper {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.slideImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  object-position: center;
+  display: block;
+  will-change: opacity;
+  pointer-events: auto;
+  cursor: zoom-in;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.18s ease-in;
+}
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.18s ease-out;
+}
+
+/* ── ARROWS ── */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.125rem;
+  height: 3.125rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 10;
+  pointer-events: auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+.arrow img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+.arrowLeft {
+  left: 1rem;
+}
+.arrowRight {
+  right: 1rem;
+}
+
+/* ── DOTS ── */
+.dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.625rem;
+  z-index: 11;
+  pointer-events: auto;
+}
+
+.dots span {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: rgba(152, 189, 221, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+  pointer-events: auto;
+}
+
+.dots span:hover {
+  background: #fff;
+}
+
+.activeDot {
+  background: #004380 !important;
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* ── CTA ── */
+.cta button {
+  background: #ff6700;
+  color: #fff;
+  border: none;
+  padding: 1.125rem 2.5rem;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  animation: buttonJump 1.5s ease-in-out infinite;
+  text-transform: uppercase;
+  letter-spacing: 0.03125rem;
+}
+
+@keyframes buttonJump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.75rem);
+  }
+}
+
+.cta button:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — 1200px
+════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .section {
+    padding: 4rem 0;
+  }
+  .container {
+    width: 100%;
+    gap: 2.25rem;
+  }
+  .header h2 {
+    font-size: 2.5rem;
+  }
+  .aptInfo {
+    width: 40%;
+  }
+  .priceValue {
+    font-size: 2rem;
+  }
+  .specCardValue {
+    font-size: 0.9rem;
+  }
+  .imageWrapper {
+    min-height: 22rem;
+  }
+  .layoutBtn {
+    font-size: 1rem;
+  }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — 768px
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .section {
+    padding: 2.5rem 1rem;
+  }
+  .container {
+    gap: 1.5rem;
+  }
+  .header h2 {
+    font-size: 2rem;
+  }
+  .carouselWrapper {
+    flex-direction: column;
+  }
+  .aptInfo {
+    width: 100%;
+  }
+  .layoutBtn {
+    font-size: 0.9rem;
+    padding: 0.8rem 0;
+  }
+  .aptTitle {
+    padding: 1rem 1rem 0;
+  }
+  .aptDivider {
+    margin: 0 1rem;
+  }
+  .priceBox {
+    margin: 0 1rem;
+  }
+  .priceTableBtn {
+    margin: 0;
+    width: auto;
+  }
+  .specTitle {
+    margin: 0 1rem;
+  }
+  .specGrid {
+    padding: 0 1rem 1rem;
+  }
+  .imageWrapper {
+    min-height: 28.5rem;
+  }
+  .arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .arrow img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .arrowLeft {
+    left: 0.75rem;
+  }
+  .arrowRight {
+    right: 0.75rem;
+  }
+  .tab {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  .cta button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .imageWrapper {
+    min-height: 19rem;
+  }
+}
+/* ════════════════════════════════════════
+   RESPONSIVE — 480px
+════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 0.75rem;
+  }
+  .container {
+    gap: 1rem;
+  }
+  .header h2 {
+    font-size: 1.5rem;
+  }
+  .layoutBtn {
+    font-size: 0.8rem;
+    padding: 0.7rem 0;
+    border: none;
+  }
+  .aptTitle {
+    font-size: 1.3rem;
+    padding: 0.75rem 0.75rem 0;
+  }
+  .aptDivider {
+    margin: 0 0.75rem;
+  }
+  .priceBox {
+    margin: 0 0.75rem;
+  }
+  .priceValue {
+    font-size: 1.75rem;
+  }
+  .priceTableBtn {
+    margin: 0;
+    width: auto;
+    padding: 0.6rem 0.5rem;
+  }
+  .priceTableText {
+    font-size: 0.75rem;
+  }
+  .priceTableBtn img {
+    width: 11px;
+    height: 11px;
+  }
+  .specTitle {
+    margin: 0 0.75rem;
+  }
+  .specGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 0 0.75rem 0.75rem;
+  }
+  .specCard {
+    min-height: 60px;
+    padding: 0.5rem;
+  }
+  .specCardLabel {
+    font-size: 0.55rem;
+  }
+  .specCardValue {
+    font-size: 0.85rem;
+  }
+  .imageWrapper {
+    min-height: 16rem;
+  }
+  .arrow {
+    width: 2rem;
+    height: 2rem;
+  }
+  .arrow img {
+    width: 1rem;
+    height: 1rem;
+  }
+  .arrowLeft {
+    left: 0.5rem;
+  }
+  .arrowRight {
+    right: 0.5rem;
+  }
+  .tab {
+    padding: 1rem !important;
+    font-size: 0.75rem;
+  }
+  .dots span {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+  .cta button {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .imageWrapper {
+    min-height: 15rem;
+  }
+}
+/* ════════════════════════════════════════
+   ZOOM MODAL
+════════════════════════════════════════ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.zoomOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.zoomModal {
+  position: relative;
+  width: 90%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.zoomImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.zoomCloseBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 10000;
+  color: #930027;
+  font-weight: bold;
+}
+
+.zoomCloseBtn:hover {
+  background: #fff;
+}
+
+.zoomArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4rem;
+  height: 4rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 10000;
+  padding: 0;
+  overflow: hidden;
+}
+
+.zoomArrow:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+.zoomArrow img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+.zoomArrowLeft {
+  left: 2rem;
+}
+.zoomArrowRight {
+  right: 2rem;
+}
+
+.zoomDots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10000;
+}
+
+.zoomDots span {
+  width: 0.875rem;
+  height: 0.875rem;
+  background: rgba(211, 167, 105, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.zoomDots span:hover {
+  background: #d3a769;
+}
+
+.zoomActiveDot {
+  background: #d3a769 !important;
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+@media (max-width: 768px) {
+  .zoomModal {
+    height: 80vh;
+  }
+  .zoomCloseBtn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+  .zoomArrowLeft {
+    left: 0.75rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  .zoomArrowRight {
+    right: 0.75rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  .zoomArrow img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .zoomModal {
+    height: 70vh;
+  }
+  .zoomCloseBtn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+  }
+  .zoomArrowLeft {
+    left: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .zoomArrowRight {
+    right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .zoomArrow img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .zoomDots {
+    bottom: 1rem;
+    gap: 0.5rem;
+  }
+  .zoomDots span {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+  .zoomActiveDot {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+  }
+}

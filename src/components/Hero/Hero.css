@@ -1,0 +1,46 @@
+/* Hero.css */
+
+:root {
+  --header-height: 80px;
+}
+
+/* ════════════════════════════════════════
+   HERO WRAPPER
+   Luôn giữ tỷ lệ 16:9 theo width
+════════════════════════════════════════ */
+.hero {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-top: var(--header-height);
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* ════════════════════════════════════════
+   VIDEO
+════════════════════════════════════════ */
+.hero__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Fallback image */
+.hero__fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}

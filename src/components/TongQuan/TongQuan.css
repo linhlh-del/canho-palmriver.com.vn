@@ -1,0 +1,223 @@
+/* MainContent.css */
+
+/* ════════════════════════════════════════
+   SECTION
+════════════════════════════════════════ */
+.mc {
+  position: relative;
+  width: 100%;
+  /* background: #343F21; */
+  background-image: url(../../assets/images/bg-web.jpg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Body: chứa text + roadmap ── */
+.mc__body {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 0 0;
+  /* Không đặt max-width ở đây vì .container bên trong TongQuanBody
+     đã tự xử lý max-width: calc(100% - 128px). Đặt trùng ở cả 2 lớp
+     sẽ khiến bị trừ 128px hai lần, làm khung bị co hẹp bất thường. */
+}
+
+/* ── Background image ── */
+.mc__bg {
+  width: 100%;
+  aspect-ratio: 1920 / 850;
+  min-height: 400px;
+  background-image: url(../../assets/images/main-content-bg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════
+   TEXT BLOCK
+════════════════════════════════════════ */
+.mc__text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.mc__heading {
+  color: #fff;
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: "DVNBeaufort-Regular", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.mc__desc {
+  color: rgba(255, 255, 255, 0.85);
+  text-align: justify;
+  font-family: "BeVietnamPro-Light", sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 700px;
+}
+
+/* ════════════════════════════════════════
+   ROADMAP / INFO TABLE
+════════════════════════════════════════ */
+.mc__info {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  /* padding dọc để line không bắt đầu từ dot đầu */
+  padding: 0;
+}
+
+/* Đường line dọc chạy qua tâm của tất cả dot */
+.mc__vline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+/* ── Mỗi row: 3 cột [label | dot | value] ── */
+.mc__row {
+  display: grid;
+  grid-template-columns: 1fr 12px 1fr;
+  align-items: center;
+  gap: 0;
+  padding: 24px 0;
+  position: relative;
+}
+
+/* ── LEFT: label căn phải ── */
+.mc__row-left {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 28px;
+}
+
+.mc__label {
+  color: #fff;
+  font-family: "DVNBeaufort-Regular", sans-serif;
+  font-size: clamp(11px, 1vw, 14px);
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: right;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── CENTER: dot nằm trên line ── */
+.mc__dot-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── RIGHT: value căn trái ── */
+.mc__row-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 28px;
+}
+
+.mc__value,
+.mc__oneplus-sub {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "DVNBeaufort-Regular", sans-serif;
+  font-size: clamp(11px, 1vw, 14px);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* OnePlus logo */
+.mc__oneplus-logo {
+  width: 80px;
+  height: 28px;
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 2px;
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — mobile
+════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .mc__body {
+    padding: 40px 16px 0;
+    gap: 28px;
+  }
+
+  /* Mobile: chuyển sang layout dọc dot + content */
+  .mc__row {
+    grid-template-columns: 12px 1fr;
+    padding: 14px 0;
+  }
+  .mc__bg {
+    min-height: 15.625rem;
+  }
+
+  .mc__row-left {
+    display: none;
+  }
+  .mc__heading {
+    letter-spacing: 0;
+  }
+
+  .mc__dot-wrap {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    margin-top: 3px;
+  }
+
+  .mc__row-right {
+    grid-column: 2;
+    grid-row: 1;
+    padding-left: 16px;
+  }
+
+  /* Hiện label trên value trên mobile qua data-label */
+  .mc__row-right::before {
+    content: attr(data-label);
+    display: block;
+    color: #fff;
+    font-family: "DVNBeaufort-Regular", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .mc__vline {
+    left: 6px;
+    transform: none;
+  }
+}

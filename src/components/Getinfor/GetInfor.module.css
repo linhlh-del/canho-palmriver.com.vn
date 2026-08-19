@@ -1,0 +1,266 @@
+.wrapperContainer {
+  border-top: 1px solid var(--pn-line, rgba(233, 231, 221, 0.18));
+  background-image: url("../../assets/images/bg-web.jpg");
+}
+
+.wrapper {
+  width: 100%;
+  padding: 40px 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: italic;
+  color: #d2b57c;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  gap: 30px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 250px;
+  gap: 0.75rem;
+}
+
+.inputGroup label {
+  font-family: Montserrat;
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #d2b57c;
+  text-align: left;
+}
+
+.inputGroup input {
+  border: none;
+  border-bottom: 1px solid #d2b57c;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: 0.3125rem 0.625rem;
+  outline: none;
+  color: #333;
+  background-color: #fff;
+}
+
+.select {
+  border: none;
+  border-bottom: 1px solid #d2b57c;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: 0.3125rem 1.875rem 0.3125rem 0.625rem;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23333' stroke-width='2' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.625rem center;
+}
+
+.select option {
+  color: #333;
+  background-color: #fff;
+}
+
+.select option[value=""] {
+  color: #999;
+}
+
+.btn {
+  background: #c48506;
+  border: none;
+  border-radius: 5px;
+  padding: 0.625rem 2rem;
+  font-family: Montserrat;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  height: 42px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  background: #004580;
+}
+
+.hotline {
+  text-align: center;
+  font-family: Montserrat;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #d2b57c;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .wrapper {
+    padding: 40px 50px;
+  }
+
+  .form {
+    gap: 20px;
+  }
+
+  .inputGroup {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 30px 20px;
+  }
+
+  .container {
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .form {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .inputGroup {
+    flex: 1;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .hotline {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .container {
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .form {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .inputGroup {
+    flex: 1;
+    min-width: auto;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .inputGroup label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #d2b57c;
+  }
+
+  .inputGroup input {
+    font-size: 14px;
+    height: 2rem;
+    background: none;
+    color: #fff;
+    opacity: 0.5;
+    padding: 0;
+  }
+
+  .select {
+    font-size: 14px;
+    height: 2rem;
+    background-color: transparent;
+    color: #fff;
+    opacity: 0.5;
+    padding: 0 1.25rem 0 0;
+  }
+
+  .select option {
+    color: #333;
+    background-color: #fff;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .hotline {
+    font-size: 0.95rem;
+  }
+}
+/* ─────────────────────────────────────────────────────────────
+   EMBEDDED VARIANT
+   Dùng khi GetInfor được nhúng vào 1 layout đã tự kiểm soát width
+   (ví dụ: cột bên trong footer của NewsDetailPage) — bỏ padding,
+   bỏ background, bỏ auto-center để form thẳng hàng với nội dung
+   xung quanh thay vì tự co giữa.
+───────────────────────────────────────────────────────────── */
+.wrapperContainer.embedded {
+  border-top: none;
+  background-image: none;
+}
+
+.wrapper.embedded {
+  padding: 0;
+  justify-content: flex-start;
+}
+
+.container.embedded {
+  max-width: 100%;
+}
+
+.title.embedded {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .wrapper.embedded {
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper.embedded {
+    padding: 0;
+  }
+}

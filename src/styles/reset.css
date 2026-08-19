@@ -1,0 +1,9 @@
+/* reset.css — xóa style mặc định của browser */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

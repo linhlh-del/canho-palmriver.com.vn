@@ -1,0 +1,106 @@
+/* ============================================================
+   DESIGN TOKENS — Bất động sản landing page
+   Chỉnh sửa tại đây, tự động áp dụng toàn bộ project
+   ============================================================ */
+
+:root {
+  /* ===== BRAND COLORS ===== */
+  --color-primary: #004380; /* xanh navy chính — header, CTA text */
+  --color-primary-dark: #002d57; /* hover, pressed */
+  --color-primary-light: #1a5fa0; /* border, accent */
+
+  --color-white: #ffffff;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f8fc; /* section xen kẽ */
+
+  /* Text */
+  --color-text-on-primary: #ffffff; /* text trên nền navy */
+  --color-text-dark: #004380;
+  --color-text-body: #334155;
+  --color-text-muted: #64748b;
+
+  /* Border */
+  --color-border: #dce6f0;
+
+  /* Overlay */
+  --color-overlay: rgba(0, 67, 128, 0.72);
+
+  /* ===== TYPOGRAPHY ===== */
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Reddit Sans", sans-serif;
+
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px — nav items */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px — CTA button */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
+  --text-hero: 3.5rem; /* 56px */
+
+  --font-normal: 400;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  --leading-tight: 1.1;
+  --leading-normal: 1.45; /* 145% — nav */
+  --leading-relaxed: 1.7;
+
+  --tracking-tight: -0.09px; /* nav items */
+  --tracking-wide: 0.48px; /* CTA button */
+
+  /* ===== SPACING ===== */
+  --space-1: 0.25rem; /*  4px */
+  --space-2: 0.5rem; /*  8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+
+  /* ===== LAYOUT ===== */
+  --header-height: 120px;
+  --header-padding-x: 60px;
+  --container-max: 1200px;
+  --container-padding: var(--space-6);
+
+  /* Grid columns header */
+  --header-col-logo1: 180px;
+  --header-col-logo2: 180px;
+  --header-col-nav: minmax(0, 1fr);
+  --header-col-cta: 280px;
+  --header-col-gap: 20px;
+
+  /* ===== COMPONENTS ===== */
+  /* CTA Button */
+  --btn-height: 64px;
+  --btn-width: 240px;
+  --btn-radius: 12px;
+  --btn-bg: var(--color-white);
+  --btn-text: var(--color-primary);
+  --btn-text-size: var(--text-2xl);
+  --btn-text-weight: var(--font-extrabold);
+
+  /* Nav */
+  --nav-item-size: var(--text-lg);
+  --nav-item-weight: var(--font-black);
+  --nav-item-color: var(--color-text-on-primary);
+
+  /* ===== EFFECTS ===== */
+  --shadow-sm: 0 1px 4px rgba(0, 67, 128, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 67, 128, 0.14);
+  --shadow-lg: 0 8px 32px rgba(0, 67, 128, 0.2);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px; /* btn */
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  --transition: 0.25s ease;
+}

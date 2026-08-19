@@ -1,0 +1,192 @@
+/* PAGE WRAPPER - thay thế .overlay + .modal */
+.pageWrapper {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url(../../assets/images/bg-web.jpg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* CONTAINER */
+.container {
+  width: 100%;
+  max-width: 37.5rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LOGO */
+.logo {
+  width: 11.25rem;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* SUCCESS ICON */
+.successIcon {
+  display: flex;
+  justify-content: center;
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* TITLE & DESCRIPTION */
+.container h2 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.2;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.container p {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  opacity: 0.95;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* INFO BOX */
+.infoBox {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #fff;
+}
+
+.infoTitle {
+  font-weight: 600;
+  margin-bottom: 1rem !important;
+}
+
+.infoBox ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.infoBox li {
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
+  opacity: 0.9;
+}
+
+/* CTA BUTTON */
+.ctaBtn {
+  background: #fff;
+  color: #d2b57c;
+  padding: 1.125rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  font-weight: 900;
+  cursor: pointer;
+  font-family: "Montserrat", Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.ctaBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* CONTACT INFO */
+.contactInfo {
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  opacity: 0.85;
+  margin-top: 0.5rem !important;
+}
+
+.contactInfo strong {
+  color: #fff;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* NO WRAP - Giữ text trên 1 hàng */
+.noWrap {
+  white-space: nowrap;
+  display: inline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container {
+    gap: 1.25rem;
+  }
+
+  .logo {
+    width: 8rem;
+  }
+
+  .infoBox {
+    padding: 1.25rem;
+  }
+
+  .infoBox ul {
+    gap: 0.625rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pageWrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .infoBox {
+    padding: 1rem;
+  }
+}
