@@ -92,7 +92,6 @@ export default function Footer({ onOpenModal }) {
               {FOOTER_CONTACT.map((row, i) => (
                 <div className="pn-address-row" key={i}>
                   <p>{row.label}</p>
-                  <a href={row.socialHref}>{row.socialLabel}</a>
                 </div>
               ))}
             </div>
