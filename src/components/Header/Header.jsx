@@ -201,4 +201,4 @@ export default function Header({ onOpenModal, variant = "full" }) {
       )}
     </>
   );
-}ád
+}
