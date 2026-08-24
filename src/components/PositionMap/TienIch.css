@@ -225,20 +225,20 @@
    ⚠️ chỉ có area-popup-1 là số liệu thật (top:30%, left:60%) — 2/3/4 đang tạm,
    cần bạn đo lại đúng vị trí trên ảnh map thật rồi thay vào */
 .amen_site .map-amen .area-popup.area-popup-1 {
-  top: 30%;
-  left: 60%;
+  top: 22%;
+  left: 30%;
 }
 .amen_site .map-amen .area-popup.area-popup-2 {
-  top: 45%;
-  left: 75%;
+  top: 50%;
+  left: 48%;
 }
 .amen_site .map-amen .area-popup.area-popup-3 {
-  top: 60%;
+  top: 30%;
   left: 65%;
 }
 .amen_site .map-amen .area-popup.area-popup-4 {
-  top: 32%;
-  left: 20%;
+  top: 23%;
+  left: 11%;
 }
 
 /* Bootstrap-lite grid, scope trong .amen_site để không phụ thuộc Bootstrap ngoài */
