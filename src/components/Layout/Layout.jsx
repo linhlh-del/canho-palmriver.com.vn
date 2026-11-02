@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Layout.css";
 import { LAYOUT_FILTERS, LAYOUT_ITEMS } from "./data";
+import { cmsText } from "../../cms/content";
+import { COPY } from "../../cms/copy";
 
 const GROUP_SWITCH_MS = 380; // phải khớp với transition duration trong CSS (.lo-plan-wrap)
 
@@ -72,11 +74,10 @@ export default function Layout({ onOpenModal }) {
         <div className="lo-content">
           {/* CỘT TRÁI (desktop) / HÀNG TRÊN (mobile): text + filter */}
           <div className="lo-text-col">
-            <h2 className="lo-section-title">MẶT BẰNG CĂN HỘ</h2>
+            <h2 className="lo-section-title">{cmsText('layout.title', COPY['layout.title'])}</h2>
 
             <p className="lo-description">
-              4 loại mặt bằng được nghiên cứu kỹ lưỡng, tối ưu công năng sử dụng
-              và tối đa hoá tầm nhìn cho từng loại căn hộ.
+              {cmsText('layout.description', COPY['layout.description'])}
             </p>
 
             {LAYOUT_FILTERS.length > 1 && (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Headers from "./components/Header/Header.jsx";
 import "./App.css";
@@ -23,9 +23,45 @@ import News from "./components/News/News.jsx";
 import NewsPage from "./components/News/NewsPage/NewsPage.jsx";
 import NewsDetailPage from "./components/News/NewsDetailPage/NewsDetailPage.jsx";
 import Layout from "./components/Layout/Layout.jsx";
+import { orderSections, cmsSeo } from "./cms/content.js";
+import { buildCmsSchema } from './cms/schema.js';
+import { cmsPageView } from './cms/tracker';
+
+function CmsRouteTracking() {
+  const { pathname } = useLocation();
+  useEffect(() => { cmsPageView(pathname); }, [pathname]);
+  return null;
+}
+
+const seoDefaults = buildCmsSchema('').seo;
+function CmsRouteSeo() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const path = pathname === '/tin-tuc' ? pathname : '/';
+    const fallback = seoDefaults.find((item) => item.path === path)?.default || {};
+    const override = cmsSeo(path);
+    const value = { ...fallback, ...(override.vi || override) };
+    if (value.title) document.title = value.title;
+    const description = document.querySelector('meta[name="description"]');
+    if (description && value.description) description.setAttribute('content', value.description);
+  }, [pathname]);
+  return null;
+}
 
 function HomePage({ onOpenModal }) {
   const location = useLocation();
+  const sections = [
+    { id: 'hero', locked: true, node: <Hero /> },
+    { id: 'tong-quan', node: <TongQuan /> },
+    { id: 'vi-tri', node: <Position /> },
+    { id: 'mat-bang-tong-the', node: <TongThe /> },
+    { id: 'mat-bang-tang', node: <MatbangTang /> },
+    { id: 'layout', node: <Layout /> },
+    { id: 'tien-ich', node: <TienIch /> },
+    { id: 'hinh-anh', node: <HinhAnh /> },
+    { id: 'tin-tuc', node: <News /> },
+    { id: 'lien-he', locked: true, node: <GetInfor /> },
+  ];
 
   // Cuộn tới section được yêu cầu từ trang khác (vd: Header ở NewsDetailPage
   // gửi qua navigate("/", { state: { scrollTo: "tin-tuc" } })).
@@ -53,17 +89,7 @@ function HomePage({ onOpenModal }) {
     <>
       <FloatingButtons onOpenModal={onOpenModal} />
       <Headers onOpenModal={onOpenModal} />
-      <Hero />
-      <TongQuan />
-      <Position />
-      <TongThe />
-      <MatbangTang />
-      <Layout />
-      <TienIch />
-      <HinhAnh />
-      <News />
-
-      <GetInfor />
+      {orderSections(sections).map((section) => <Fragment key={section.id}>{section.node}</Fragment>)}
       {/* <MatbangTang /> */}
       {/* <CanHo onOpenModal={onOpenModal} /> */}
       {/* <GetInfor /> */}
@@ -83,6 +109,8 @@ function App() {
 
   return (
     <>
+      <CmsRouteTracking />
+      <CmsRouteSeo />
       <Routes>
         <Route path="/" element={<HomePage onOpenModal={openModal} />} />
         <Route path="/tin-tuc" element={<NewsPage />} />

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./MatBangTang.css";
 import { FILTERS, GALLERY_ITEMS } from "./data";
+import { cmsText } from "../../cms/content";
+import { COPY } from "../../cms/copy";
 
 export default function MatBangTang({ onOpenModal }) {
   const [activeCategory, setActiveCategory] = useState(FILTERS[0]?.key ?? "");
@@ -29,13 +31,11 @@ export default function MatBangTang({ onOpenModal }) {
           {/* CỘT TRÁI (desktop) / HÀNG TRÊN (mobile): text */}
           <div className="mbt-text-col">
             <h2 className="mbt-section-title">
-              MẶT BẰNG TẦNG <br />
-              ĐIỂN HÌNH
+              {cmsText('floor.title', COPY['floor.title'])}
             </h2>
 
             <p className="mbt-description">
-              Các căn hộ được quy hoạch tối ưu hóa công năng, đón trọn ánh sáng
-              tự nhiên và luồng gió mát từ dòng sông.
+              {cmsText('floor.description', COPY['floor.description'])}
             </p>
 
             {FILTERS.length > 1 && (
